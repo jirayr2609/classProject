@@ -1,0 +1,48 @@
+﻿<Window x:Class="classProject.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:classProject"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <StackPanel Orientation="Horizontal">
+            <StackPanel>
+                <StackPanel Margin="100,10,0,10" Height="60" Width="auto" HorizontalAlignment="left">
+                    <Label Content="Search" HorizontalAlignment="Center" Height="30" />
+                    <TextBox Margin="0,-10,0,0" Text="{Binding searchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Height="20" Width="100"/>
+                    
+                </StackPanel>
+                <StackPanel Margin="5,0,0,0" Height="auto" Width="380" HorizontalAlignment="Left">
+                    <ListView x:Name="View" MaxHeight="300" GridViewColumnHeader.Click="View_Click"  ItemsSource="{Binding listDog}" IsTextSearchEnabled="True" Width="300"  VerticalContentAlignment="Top"  ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="False"  SelectedItem="{Binding selecetdDog}" HorizontalAlignment="Left" Height="auto">
+                        <ListView.View>
+                            <GridView AllowsColumnReorder="true" ColumnHeaderToolTip="Dog Breeds">
+                                <GridViewColumn Header="Dog Breeds" DisplayMemberBinding="{Binding Path=breed}" Width="auto"/>
+
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Margin="20,30,0,0" HorizontalAlignment="Center">
+                <StackPanel Margin="0,40,0,0">
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Selected Dog Breed :" />
+                        <TextBlock Margin="0,5,0,0" Text="{Binding textPart1}" HorizontalAlignment="Center" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Selected Dog SubBreed :" />
+                        <TextBlock Text="{Binding textPart2}" Margin="0,5,0,0" HorizontalAlignment="Center"  />
+                    </StackPanel>
+                    <StackPanel>
+                        <Image Source="{Binding randomPhoto}" Height="200" Width="300" />
+                    </StackPanel>
+
+
+                </StackPanel>
+
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
